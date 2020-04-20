@@ -10,13 +10,13 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api/posts', verifyToken, (req, res) => {  
-  jwt.verify(req.token, 'secretkey', (err, authData) => {
+  jwt.verify(req.token, 'secretkey', (err, decoded) => {
     if(err) {
-      res.sendStatus(403);
+       
     } else {
       res.json({
-        message: 'Post created...',
-        authData
+        message: 'is logged',
+        decoded
       });
     }
   });
